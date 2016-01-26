@@ -45,7 +45,6 @@ public class RSADecryptEncrypt {
                     e = in.nextInt();
                     in.nextLine();
                     Encrypt encrypter = new Encrypt(files[INPUT_FILE], files[OUTPUT_FILE], n, e);
-                    //TODO implementar cifrador
                     encrypter.encrypt();
                     break;
                 case 2:
