@@ -7,6 +7,7 @@ package rsadecryptencrypt;
 import decrypt.Decrypt;
 import encrypt.Encrypt;
 import java.util.Scanner;
+import utils.Exponentiation;
 
 /**
  *
@@ -55,7 +56,6 @@ public class RSADecryptEncrypt {
                     d = in.nextInt();
                     in.nextLine();
                     Decrypt decrypter = new Decrypt(files[INPUT_FILE], files[OUTPUT_FILE], n, d);
-                    //TODO implementar decifrador
                     decrypter.decrypt();
                     break;
                 default:
@@ -63,7 +63,7 @@ public class RSADecryptEncrypt {
                     break;
             }
         } while (run);
-        System.out.println("Programa finalizado...");
+        System.out.println("Programa finalizado..."); 
     }
 
     private static String[] getFilesNames() {
