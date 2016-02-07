@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Exponentiation;
@@ -31,14 +33,14 @@ public class Encrypt {
     }
 
     public void encrypt() {
-        try (FileInputStream in = new FileInputStream(inputFile); FileOutputStream out = new FileOutputStream(outputFile)) {
+        try (FileInputStream in = new FileInputStream(inputFile); Writer out = new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8")) {
             System.out.println("\n*******************************\nMensagem criptografada:");
             while (in.available() > 0) {
                 //o read do fileinputstream lê um byte como sendo um inteiro(0-255), podemos converte-lo para um char
                 //que pode ser visto como um unsigned short(16bits)
                 char m = (char) in.read();
                 char c = Exponentiation.binaryExponentiation(m, e, n);
-                System.out.print((int)c + " ");
+                System.out.print(c);
                 out.write(c);
             }
             System.out.println("\n*******************************\n");
